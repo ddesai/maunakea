@@ -9,9 +9,11 @@
 #import "MaunakeaMasterViewController.h"
 
 #import "MaunakeaDetailViewController.h"
+#import "DataModel.h"
 
 @interface MaunakeaMasterViewController () {
     NSMutableArray *_objects;
+    DataModel *dm;
 }
 @end
 
@@ -57,22 +59,28 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if(!dm) {
+        dm = [[DataModel alloc] init];
+    }
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     //return _objects.count;
-    return 3;
+    //return 3;
+    return [dm getCategories];
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
+    //NSDate *object = _objects[indexPath.row];
+    cell.textLabel.text = [[dm categories][indexPath.row] name];
     //cell.textLabel.text = [object description];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@%d",@"Chapter",indexPath.row];
+    //cell.textLabel.text = [NSString stringWithFormat:@"%@%d",@"Chapter",indexPath.row];
     return cell;
 }
 
