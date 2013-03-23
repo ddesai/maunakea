@@ -10,52 +10,95 @@
 #import "MaunakeaAppDelegate.h"
 
 @interface MaunakeaPointersVC ()
-
+@property (strong, nonatomic) UIPopoverController *masterPopoverController;
+- (void)configureView;
 @end
 
 @implementation MaunakeaPointersVC
 
 DataModel* dm;
-static int toggle = 6;
+static int toggle = -1;
 
 @synthesize myMemoryView;
 
+#pragma mark - Managing the detail item
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (void)setDetailItem:(id)newDetailItem
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+    if (_detailItem != newDetailItem) {
+        _detailItem = newDetailItem;
+        
+        // Update the view.
+        [self configureView];
     }
-    return self;
+    
+    if (self.masterPopoverController != nil) {
+        [self.masterPopoverController dismissPopoverAnimated:YES];
+    }
+}
+
+- (void)configureView
+{
+    // Update the user interface for the detail item.
+    
+    if (self.detailItem) {
+        self.detailDescriptionLabel.text = [self.detailItem description];
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+    [self configureView];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Split view
+
+- (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
+{
+    barButtonItem.title = NSLocalizedString(@"Master", @"Master");
+    [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
+    self.masterPopoverController = popoverController;
+}
+
+- (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    // Called when the view is shown again in the split view, invalidating the button and popover controller.
+    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+    self.masterPopoverController = nil;
+}
+
+
+// --- Table View
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+    if(!dm) {
+        // Obtain the Data Model from the App Delegate
+        dm = [(MaunakeaAppDelegate *)[[UIApplication sharedApplication] delegate] dataModel];
+    }
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    // Return the number of rows in the section.
     if(!dm) {
         // Obtain the Data Model from the App Delegate
         dm = [(MaunakeaAppDelegate *)[[UIApplication sharedApplication] delegate] dataModel];
     }
     return [dm getMemorySize];
+    //return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,59 +122,41 @@ static int toggle = 6;
     else if(toggle <=8) {
         cell.backgroundColor = dm.C4;
     }
+    
+    if([cell.textLabel.text compare:@"Address"] == 0)
+    {
+        cell.backgroundColor = dm.C2;
+    }
+    /*
+     // For the first time, it initializes it to these values
+     // Later, after I change the data model to use object, this code will change
+     if([dataModel currentSection] == SECTION_INIT) {
+     cell.textLabel.text = [dataModel getSectionAtIndex:[indexPath row]];
+     cell.detailTextLabel.text = [self parseSelection:[indexPath row]];
+     }
+     // Makes sure that we only update the changed item
+     else {
+     if([dataModel currentSection] == [indexPath row])
+     cell.detailTextLabel.text = [self parseSelection:[indexPath row]];
+     }*/
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
     /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
+     [dataModel setCurrentSection:[indexPath row]];
+     
+     SearchDetailViewController *ivc = [[SearchDetailViewController alloc] initWithStyle:UITableViewStyleGrouped];
+     ivc.searchDelegate = self;
+     
+     [self.navigationController pushViewController:ivc animated:YES];
      */
 }
+
+
 
 @end

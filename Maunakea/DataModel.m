@@ -21,7 +21,8 @@
         memory = [[NSMutableArray alloc] init];
     }
     [self initCats];
-    [self initMemory];
+    //[self initMemoryVariables];
+    [self initMemoryPointers];
     [self initGlobals];
     return self;
 }
@@ -99,8 +100,43 @@
     return [[memory objectAtIndex:index] val];
 }
 
+- (void) initMemoryPointers
+{
+    [self addMemoryCell:@"Address" andValue:@"Value"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"41"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"34"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"75"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"7"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0xFF"];
+    [self addMemoryCellWithValue:@"0x00"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0xFF"];
+    [self addMemoryCellWithValue:@"0x04"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0xFF"];
+    [self addMemoryCellWithValue:@"0x0C"];
+    
+    [self addMemoryCell];
+    [self addMemoryCell];
+}
 
-- (void) initMemory
+- (void) initMemoryVariables
 {
     [self addMemoryCell:@"Address" andValue:@"Value"];
     [self addMemoryCellWithValue:@"65"];
@@ -136,6 +172,7 @@
     [self addMemoryCell];
     [self addMemoryCell];
 }
+
 
 @end
 
