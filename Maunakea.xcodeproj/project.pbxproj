@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A1FA92816FDE78A00CA5010 /* MKMemoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1FA92716FDE78A00CA5010 /* MKMemoryViewController.m */; };
 		6A64D5DC16F6110300E450BB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A64D5DB16F6110300E450BB /* UIKit.framework */; };
 		6A64D5DE16F6110300E450BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A64D5DD16F6110300E450BB /* Foundation.framework */; };
 		6A64D5E016F6110300E450BB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A64D5DF16F6110300E450BB /* CoreGraphics.framework */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A1FA92616FDE78A00CA5010 /* MKMemoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMemoryViewController.h; sourceTree = "<group>"; };
+		6A1FA92716FDE78A00CA5010 /* MKMemoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMemoryViewController.m; sourceTree = "<group>"; };
 		6A64D5D816F6110300E450BB /* Maunakea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maunakea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A64D5DB16F6110300E450BB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6A64D5DD16F6110300E450BB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -106,6 +109,8 @@
 				6A64D5FD16F6110300E450BB /* MaunakeaDetailViewController.m */,
 				6AE8B02616F6CC4400D918A7 /* MaunakeaReadingDetailVC.h */,
 				6AE8B02716F6CC4400D918A7 /* MaunakeaReadingDetailVC.m */,
+				6A1FA92616FDE78A00CA5010 /* MKMemoryViewController.h */,
+				6A1FA92716FDE78A00CA5010 /* MKMemoryViewController.m */,
 				6AE8B02316F6A84B00D918A7 /* DataModel.h */,
 				6AE8B02416F6A84B00D918A7 /* DataModel.m */,
 				6A64D5E216F6110300E450BB /* Supporting Files */,
@@ -203,6 +208,7 @@
 				6A64D5FE16F6110300E450BB /* MaunakeaDetailViewController.m in Sources */,
 				6AE8B02516F6A84B00D918A7 /* DataModel.m in Sources */,
 				6AE8B02816F6CC4400D918A7 /* MaunakeaReadingDetailVC.m in Sources */,
+				6A1FA92816FDE78A00CA5010 /* MKMemoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

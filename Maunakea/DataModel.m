@@ -10,7 +10,7 @@
 
 @implementation DataModel
 
-@synthesize categories;
+@synthesize categories, memory;
 
 
 - (id) init
@@ -18,11 +18,14 @@
     self = [super init];
     if (self) {
         categories = [[NSMutableArray alloc] init];
+        memory = [[NSMutableArray alloc] init];
     }
     [self initCats];
+    [self initMemory];
     return self;
 }
 
+// Category code
 - (void) addCategoryWithName:(NSString*)newName andVC:(UIViewController*)newVC
 {
     Category *c = [[Category alloc] initCategoryWithName:newName andVC:newVC];
@@ -37,9 +40,72 @@
 - (void) initCats
 {
     [self addCategoryWithName:@"Home" andVC:nil];
-    [self addCategoryWithName:@"Chapter 1" andVC:nil];
-    [self addCategoryWithName:@"Chapter 2" andVC:nil];
+    [self addCategoryWithName:@"Variables" andVC:nil];
+    [self addCategoryWithName:@"Pointers" andVC:nil];
+    [self addCategoryWithName:@"Functions" andVC:nil];
+    [self addCategoryWithName:@"Link List" andVC:nil];
+    [self addCategoryWithName:@"Pass by reference" andVC:nil];
+    [self addCategoryWithName:@"Recursion" andVC:nil];
 }
+
+
+// Memory Code
+- (void) addMemoryCell:(NSString*)newAddress andValue:(NSString*)newValue
+{
+    MemoryCell *m = [[MemoryCell alloc] initMemoryCellWithAddress:newAddress andValue:newValue];
+    [memory addObject:m];
+}
+
+- (void) addMemoryCellWithValue:(NSString*)newValue
+{
+    MemoryCell *m = [[MemoryCell alloc] initMemoryCellWithValue:newValue];
+    [memory addObject:m];
+}
+
+- (void) addMemoryCell
+{
+    MemoryCell *m = [[MemoryCell alloc] init];
+    [memory addObject:m];
+}
+
+- (int) getMemorySize
+{
+    return [memory count];
+}
+
+- (MemoryCell *)getMemoryAtIndex: (NSUInteger) index
+{
+    return [memory objectAtIndex:index];
+}
+
+- (NSString *)getMemoryAddrAtIndex: (NSUInteger) index
+{
+    return [[memory objectAtIndex:index] addr];
+}
+
+- (NSString *)getMemoryValAtIndex: (NSUInteger) index
+{
+    return [[memory objectAtIndex:index] val];
+}
+
+
+- (void) initMemory
+{
+    [self addMemoryCell:@"Address" andValue:@"Value"];
+    [self addMemoryCellWithValue:@"23"];
+    [self addMemoryCellWithValue:@"2"];
+    [self addMemoryCellWithValue:@"25"];
+    [self addMemoryCellWithValue:@"6"];
+    [self addMemoryCellWithValue:@"7"];
+    [self addMemoryCellWithValue:@"13"];
+    [self addMemoryCell];
+    [self addMemoryCell];
+    [self addMemoryCell];
+    [self addMemoryCell];
+    [self addMemoryCell];
+    [self addMemoryCell];
+}
+
 @end
 
 
@@ -62,6 +128,41 @@
 - (id) init
 {
     return [self initCategoryWithName:@"UNDEF Category" andVC:nil];
+}
+
+@end
+
+
+
+// Memory Class
+
+// Category Class
+@implementation MemoryCell
+
+@synthesize addr, val;
+
+static unsigned int memPointer = 0xFF00;
+
+- (id) initMemoryCellWithAddress:(NSString*)newAddress andValue:(NSString*)newValue
+{
+    self = [super init];
+    if(self) {
+        addr = newAddress;
+        val = newValue;
+    }
+    return self;
+}
+
+- (id) initMemoryCellWithValue:(NSString*)newValue
+{
+    NSString *newAddress = [NSString stringWithFormat:@"0x%X",memPointer++];
+    return [self initMemoryCellWithAddress:newAddress andValue:newValue];
+}
+
+
+- (id) init
+{
+    return [self initMemoryCellWithValue:@"0"];
 }
 
 @end

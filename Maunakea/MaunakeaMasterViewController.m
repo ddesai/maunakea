@@ -9,7 +9,7 @@
 #import "MaunakeaMasterViewController.h"
 
 #import "MaunakeaDetailViewController.h"
-#import "DataModel.h"
+#import "MaunakeaAppDelegate.h"
 
 @interface MaunakeaMasterViewController () {
     NSMutableArray *_objects;
@@ -60,7 +60,8 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if(!dm) {
-        dm = [[DataModel alloc] init];
+        // Obtain the Data Model from the App Delegate
+        dm = [(MaunakeaAppDelegate *)[[UIApplication sharedApplication] delegate] dataModel];
     }
     return 1;
 }

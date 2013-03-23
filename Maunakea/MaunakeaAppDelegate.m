@@ -10,8 +10,19 @@
 
 @implementation MaunakeaAppDelegate
 
+@synthesize dataModel;
+
+// Initialize the Data Model
+- (void) initDataModel
+{
+    dataModel = [[DataModel alloc] init];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Init the Data Model
+    [self initDataModel];
+    
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
