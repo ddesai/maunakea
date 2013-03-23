@@ -17,6 +17,7 @@
 @implementation MaunakeaReadingDetailVC
 
 DataModel* dm;
+static int toggle = 6;
 
 @synthesize myMemoryView;
 
@@ -114,7 +115,14 @@ DataModel* dm;
     
     cell.textLabel.text = [dm getMemoryAddrAtIndex:[indexPath row]];
     cell.detailTextLabel.text = [dm getMemoryValAtIndex:[indexPath row]];
-
+    toggle++; if(toggle == 9) toggle = 1;
+    if(toggle <= 4) {
+        cell.backgroundColor = dm.C1;
+    }
+    else if(toggle <=8) {
+        cell.backgroundColor = dm.C4;
+    }
+    
     /*
     // For the first time, it initializes it to these values
     // Later, after I change the data model to use object, this code will change

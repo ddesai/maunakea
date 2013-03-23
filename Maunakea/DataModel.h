@@ -39,6 +39,7 @@
 
 @property (strong, atomic) NSMutableArray *categories;
 @property (strong, atomic) NSMutableArray *memory;
+@property (strong, atomic) UIColor *C1, *C2, *C3, *C4;
 
 
 - (id) init;

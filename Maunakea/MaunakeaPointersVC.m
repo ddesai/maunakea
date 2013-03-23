@@ -1,18 +1,25 @@
 //
-//  MKMemoryViewController.m
+//  MaunakeaPointersVC.m
 //  Maunakea
 //
 //  Created by Darshan Desai on 3/23/13.
 //  Copyright (c) 2013 Darshan Desai. All rights reserved.
 //
 
-#import "MKMemoryViewController.h"
+#import "MaunakeaPointersVC.h"
+#import "MaunakeaAppDelegate.h"
 
-@interface MKMemoryViewController ()
+@interface MaunakeaPointersVC ()
 
 @end
 
-@implementation MKMemoryViewController
+@implementation MaunakeaPointersVC
+
+DataModel* dm;
+static int toggle = 6;
+
+@synthesize myMemoryView;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,41 +33,52 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 4;
+    if(!dm) {
+        // Obtain the Data Model from the App Delegate
+        dm = [(MaunakeaAppDelegate *)[[UIApplication sharedApplication] delegate] dataModel];
+    }
+    return [dm getMemorySize];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [myMemoryView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
     
+    cell.textLabel.text = [dm getMemoryAddrAtIndex:[indexPath row]];
+    cell.detailTextLabel.text = [dm getMemoryValAtIndex:[indexPath row]];
+    toggle++; if(toggle == 9) toggle = 1;
+    if(toggle <= 4) {
+        cell.backgroundColor = dm.C1;
+    }
+    else if(toggle <=8) {
+        cell.backgroundColor = dm.C4;
+    }
     return cell;
 }
 
@@ -107,6 +125,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
 }
 
 @end

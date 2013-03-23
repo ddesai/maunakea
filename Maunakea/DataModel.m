@@ -10,7 +10,7 @@
 
 @implementation DataModel
 
-@synthesize categories, memory;
+@synthesize categories, memory, C1, C2, C3, C4;
 
 
 - (id) init
@@ -22,7 +22,18 @@
     }
     [self initCats];
     [self initMemory];
+    [self initGlobals];
     return self;
+}
+
+// general
+
+- (void) initGlobals
+{
+    C1 = [UIColor colorWithRed:0.8 green:0.4 blue:1 alpha:1];
+    C2 = [UIColor colorWithRed:1 green:0.8 blue:0.5 alpha:1];
+    C3 = [UIColor colorWithRed:1 green:0.9 blue:1 alpha:1];
+    C4 = [UIColor colorWithRed:0.3 green:1 blue:0.4 alpha:1];
 }
 
 // Category code
@@ -92,12 +103,32 @@
 - (void) initMemory
 {
     [self addMemoryCell:@"Address" andValue:@"Value"];
-    [self addMemoryCellWithValue:@"23"];
+    [self addMemoryCellWithValue:@"65"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"8"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"4"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"12"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"4"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"32"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
+    [self addMemoryCellWithValue:@"0"];
     [self addMemoryCellWithValue:@"2"];
-    [self addMemoryCellWithValue:@"25"];
-    [self addMemoryCellWithValue:@"6"];
-    [self addMemoryCellWithValue:@"7"];
-    [self addMemoryCellWithValue:@"13"];
+    
     [self addMemoryCell];
     [self addMemoryCell];
     [self addMemoryCell];
