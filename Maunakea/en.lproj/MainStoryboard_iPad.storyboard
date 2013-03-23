@@ -24,7 +24,7 @@
             <objects>
                 <viewController storyboardIdentifier="" title="Detail" id="4" customClass="MaunakeaDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="26">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <rect key="frame" x="0.0" y="64" width="703" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="scu1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ybV-EF-lh3">
@@ -51,17 +51,38 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Developer: Darshan Desai" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzj-8I-pKZ">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="32G-SF-4CI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Guided by: Prof Maria Pantoja" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoK-ln-Zux">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="kCC-7q-LpE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="I8X-lf-s6O" firstAttribute="leading" secondItem="26" secondAttribute="leading" constant="136" id="37Y-1a-cUs"/>
-                            <constraint firstAttribute="bottom" secondItem="I8X-lf-s6O" secondAttribute="bottom" constant="143" id="5m1-vh-Zwk"/>
+                            <constraint firstAttribute="bottom" secondItem="Zzj-8I-pKZ" secondAttribute="bottom" constant="84" id="L3F-O6-oUw"/>
                             <constraint firstItem="ybV-EF-lh3" firstAttribute="top" secondItem="26" secondAttribute="top" constant="37" id="Qj6-54-9Zf"/>
                             <constraint firstItem="ybV-EF-lh3" firstAttribute="centerX" secondItem="26" secondAttribute="centerX" type="default" id="WML-V5-ZUz"/>
+                            <constraint firstAttribute="trailing" secondItem="Zzj-8I-pKZ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="cbk-aN-J8i"/>
+                            <constraint firstAttribute="trailing" secondItem="RoK-ln-Zux" secondAttribute="trailing" constant="43" id="oBN-ks-ohz"/>
+                            <constraint firstItem="Zzj-8I-pKZ" firstAttribute="top" secondItem="RoK-ln-Zux" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="rzb-vP-DdL"/>
+                            <constraint firstAttribute="bottom" secondItem="I8X-lf-s6O" secondAttribute="bottom" constant="181" id="tiW-mN-dpj"/>
                         </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="53"/>
+                    <navigationItem key="navigationItem" title="Maunakea - Learn C Programming with fun! " id="53"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15" sceneMemberID="firstResponder"/>
             </objects>
@@ -72,7 +93,7 @@
             <objects>
                 <viewController id="WAd-1K-b39" customClass="MaunakeaPointersVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xvz-75-Bnx">
-                        <rect key="frame" x="0.0" y="64" width="703" height="704"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="25" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="yJH-HB-8Gr">
@@ -432,7 +453,6 @@
                             <constraint firstItem="cQa-4H-HN4" firstAttribute="top" secondItem="Xvz-75-Bnx" secondAttribute="top" constant="290" id="qDb-vA-4s9"/>
                             <constraint firstItem="9jx-2v-GAU" firstAttribute="top" secondItem="cQa-4H-HN4" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="y95-GU-vVl"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" title="Learn and Have Fun with Pointers" id="QFo-bn-XI1"/>
                     <connections>
@@ -441,7 +461,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UdW-T3-CFR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-471" y="1274"/>
+            <point key="canvasLocation" x="-919" y="1396"/>
         </scene>
         <!--Maunakea Reading DetailVC - Variables Memory Allocation-->
         <scene sceneID="j1T-sZ-sW5">
@@ -804,7 +824,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQg-Vl-gzp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="367" y="1368"/>
+            <point key="canvasLocation" x="-155" y="1406"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="18">
@@ -872,7 +892,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="WAd-1K-b39" kind="relationship" relationship="rootViewController" id="shE-Qy-1mn"/>
+                        <segue destination="4" kind="relationship" relationship="rootViewController" id="gZD-mZ-Ctx"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49" userLabel="First Responder" sceneMemberID="firstResponder"/>
